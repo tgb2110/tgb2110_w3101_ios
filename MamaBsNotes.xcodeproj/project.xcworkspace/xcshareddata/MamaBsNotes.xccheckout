@@ -10,31 +10,31 @@
 	<string>MamaBsNotes</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B870304C0A29B4440AD23DCDE4FFE55B9A1168CF</key>
-		<string>https://github.com/tgb2110/tgb2110_w3101_ios.git</string>
+		<key>76772D1EB51A945C4A55B39711E5D97269CB0BC7</key>
+		<string>https://github.com/tgb2110/MamBsNotes.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MamaBsNotes/MamaBsNotes.xcodeproj</string>
+	<string>MamaBsNotes.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B870304C0A29B4440AD23DCDE4FFE55B9A1168CF</key>
-		<string>../../..</string>
+		<key>76772D1EB51A945C4A55B39711E5D97269CB0BC7</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/tgb2110/tgb2110_w3101_ios.git</string>
+	<string>https://github.com/tgb2110/MamBsNotes.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B870304C0A29B4440AD23DCDE4FFE55B9A1168CF</string>
+	<string>76772D1EB51A945C4A55B39711E5D97269CB0BC7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B870304C0A29B4440AD23DCDE4FFE55B9A1168CF</string>
+			<string>76772D1EB51A945C4A55B39711E5D97269CB0BC7</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Final_Project</string>
+			<string>MamaBsNotes</string>
 		</dict>
 	</array>
 </dict>
