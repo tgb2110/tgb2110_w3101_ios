@@ -12,6 +12,11 @@
 @interface AddNoteViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet UITextField *noteTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextView *noteBodyTextView;
+
+- (IBAction)hideKeyboard:(UIControl *)sender;
+
 
 @end
 
@@ -21,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.noteTitleTextField.delegate = self;
+    self.noteBodyTextView.delegate = self;
     [self setUpNavigationButtons];
     
     self.noteImageView.backgroundColor = [UIColor purpleColor];
@@ -35,7 +42,9 @@
 - (void)setUpNavigationButtons {
     UIBarButtonItem *btnShare = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(emailNote:)];
     UIBarButtonItem *btnCamera = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(pickImageSource:)];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnShare, btnCamera, nil]];
+    UIBarButtonItem *btnSave = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveNote:)];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnSave, btnShare, btnCamera, nil]];
+
 }
 
 #pragma mark - MFMailCompose delegate methods
@@ -146,5 +155,23 @@
 {
     self.noteImageView.backgroundColor = [UIColor blackColor];
     [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+-(void) saveNote:(UIBarButtonItem *)sender  {
+    
+}
+
+#pragma mark - Text and Keyboard Management
+
+-(void)textViewDidEndEditing:(UITextView *)textView {
+    
+    if ([textView.text isEqualToString:@""]){
+        textView.text = @"Please enter the body of your note here.";
+    }
+}
+
+- (IBAction)hideKeyboard:(UIControl *)sender {
+    [[self view] endEditing:YES];
 }
 @end

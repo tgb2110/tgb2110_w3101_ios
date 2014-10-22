@@ -110,27 +110,51 @@
                         <viewControllerLayoutGuide type="top" id="n5D-ec-4dy"/>
                         <viewControllerLayoutGuide type="bottom" id="NPX-aH-Cf5"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wri-ng-F2W">
+                    <view key="view" contentMode="scaleToFill" id="wri-ng-F2W" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZP-nS-2Z4">
-                                <rect key="frame" x="441" y="72" width="159" height="152"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter your note title here." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-MY-SDA">
+                                <rect key="frame" x="16" y="230" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please enter the body of your note here. " translatesAutoresizingMaskIntoConstraints="NO" id="Ebp-s3-dpC">
+                                <rect key="frame" x="16" y="274" width="568" height="79"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="159" id="YZY-fw-xVw"/>
+                                    <constraint firstAttribute="height" constant="79" id="zZa-sa-Nfz"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZP-nS-2Z4">
+                                <rect key="frame" x="16" y="72" width="568" height="152"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DZP-nS-2Z4" firstAttribute="top" secondItem="n5D-ec-4dy" secondAttribute="bottom" constant="8" symbolic="YES" id="4ph-IT-eQl"/>
-                            <constraint firstItem="NPX-aH-Cf5" firstAttribute="top" secondItem="DZP-nS-2Z4" secondAttribute="bottom" constant="376" id="O2u-Ov-2EN"/>
-                            <constraint firstAttribute="trailing" secondItem="DZP-nS-2Z4" secondAttribute="trailing" id="ODc-ga-hWZ"/>
+                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="trailing" secondItem="HoR-MY-SDA" secondAttribute="trailing" id="1RV-uP-jAq"/>
+                            <constraint firstItem="HoR-MY-SDA" firstAttribute="top" secondItem="DZP-nS-2Z4" secondAttribute="bottom" constant="6" id="9xc-ho-WgG"/>
+                            <constraint firstItem="DZP-nS-2Z4" firstAttribute="trailing" secondItem="HoR-MY-SDA" secondAttribute="trailing" id="A9F-rm-Vpr"/>
+                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="leading" secondItem="wri-ng-F2W" secondAttribute="leadingMargin" id="Chd-vR-4RA"/>
+                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="leading" secondItem="HoR-MY-SDA" secondAttribute="leading" id="D9P-xk-tbE"/>
+                            <constraint firstItem="NPX-aH-Cf5" firstAttribute="top" secondItem="Ebp-s3-dpC" secondAttribute="bottom" constant="247" id="XFI-WZ-F7A"/>
+                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="top" secondItem="HoR-MY-SDA" secondAttribute="bottom" constant="14" id="fYP-os-sld"/>
+                            <constraint firstItem="DZP-nS-2Z4" firstAttribute="top" secondItem="n5D-ec-4dy" secondAttribute="bottom" constant="8" symbolic="YES" id="gEW-tv-vKy"/>
+                            <constraint firstItem="HoR-MY-SDA" firstAttribute="leading" secondItem="DZP-nS-2Z4" secondAttribute="leading" id="lNS-mC-jXt"/>
+                            <constraint firstItem="HoR-MY-SDA" firstAttribute="trailing" secondItem="wri-ng-F2W" secondAttribute="trailingMargin" id="vbF-58-yZ9"/>
                         </constraints>
+                        <connections>
+                            <action selector="clickedOffTextField:" destination="XAA-aB-q3p" eventType="valueChanged" id="kjA-Gg-Ddw"/>
+                            <action selector="hideKeyboard:" destination="XAA-aB-q3p" eventType="touchUpInside" id="F26-X6-q55"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="aY7-So-pH9"/>
                     <connections>
+                        <outlet property="noteBodyTextView" destination="Ebp-s3-dpC" id="98c-68-ybg"/>
                         <outlet property="noteImageView" destination="DZP-nS-2Z4" id="YWm-Aa-OXD"/>
+                        <outlet property="noteTitleTextField" destination="HoR-MY-SDA" id="MBA-fT-oa8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svG-KO-mwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
