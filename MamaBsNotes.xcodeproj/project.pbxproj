@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3B525DF619F83779009D3A74 /* Note-Icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B525DF519F83779009D3A74 /* Note-Icon.jpg */; };
-		3B525DFA19F83A28009D3A74 /* MainNotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B525DF919F83A28009D3A74 /* MainNotesTableViewController.m */; };
 		3B525E0119F83AC5009D3A74 /* NoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B525E0019F83AC5009D3A74 /* NoteTableViewCell.m */; };
+		3B525E0719F84601009D3A74 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B525E0619F84601009D3A74 /* MainViewController.m */; };
+		3B525E0D19F84ADC009D3A74 /* AddNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B525E0C19F84ADC009D3A74 /* AddNoteViewController.m */; };
 		3B6AD50019F715F900168998 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6AD4FF19F715F900168998 /* main.m */; };
 		3B6AD50319F715F900168998 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6AD50219F715F900168998 /* AppDelegate.m */; };
 		3B6AD50919F715F900168998 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6AD50719F715F900168998 /* Main.storyboard */; };
@@ -30,10 +31,12 @@
 
 /* Begin PBXFileReference section */
 		3B525DF519F83779009D3A74 /* Note-Icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Note-Icon.jpg"; path = "Assets/Note-Icon.jpg"; sourceTree = "<group>"; };
-		3B525DF819F83A28009D3A74 /* MainNotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainNotesTableViewController.h; path = ../MainNotesTableViewController.h; sourceTree = "<group>"; };
-		3B525DF919F83A28009D3A74 /* MainNotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainNotesTableViewController.m; path = ../MainNotesTableViewController.m; sourceTree = "<group>"; };
 		3B525DFF19F83AC5009D3A74 /* NoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewCell.h; sourceTree = "<group>"; };
 		3B525E0019F83AC5009D3A74 /* NoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewCell.m; sourceTree = "<group>"; };
+		3B525E0519F84601009D3A74 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
+		3B525E0619F84601009D3A74 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
+		3B525E0B19F84ADC009D3A74 /* AddNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNoteViewController.h; sourceTree = "<group>"; };
+		3B525E0C19F84ADC009D3A74 /* AddNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNoteViewController.m; sourceTree = "<group>"; };
 		3B6AD4FA19F715F900168998 /* MamaBsNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MamaBsNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B6AD4FE19F715F900168998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6AD4FF19F715F900168998 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -79,8 +82,10 @@
 		3B525DFB19F83A53009D3A74 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3B525DF819F83A28009D3A74 /* MainNotesTableViewController.h */,
-				3B525DF919F83A28009D3A74 /* MainNotesTableViewController.m */,
+				3B525E0B19F84ADC009D3A74 /* AddNoteViewController.h */,
+				3B525E0C19F84ADC009D3A74 /* AddNoteViewController.m */,
+				3B525E0519F84601009D3A74 /* MainViewController.h */,
+				3B525E0619F84601009D3A74 /* MainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -262,9 +267,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B6AD50319F715F900168998 /* AppDelegate.m in Sources */,
-				3B525DFA19F83A28009D3A74 /* MainNotesTableViewController.m in Sources */,
 				3B6AD50019F715F900168998 /* main.m in Sources */,
 				3B525E0119F83AC5009D3A74 /* NoteTableViewCell.m in Sources */,
+				3B525E0719F84601009D3A74 /* MainViewController.m in Sources */,
+				3B525E0D19F84ADC009D3A74 /* AddNoteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

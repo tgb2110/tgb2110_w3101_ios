@@ -1,5 +1,5 @@
 //
-//  MainNotesTableViewController.h
+//  MainViewController.h
 //  MamaBsNotes
 //
 //  Created by OB Troy on 10/22/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainNotesTableViewController : UITableViewController
+@interface MainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
