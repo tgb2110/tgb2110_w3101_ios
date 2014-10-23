@@ -23,15 +23,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataStore = [DataStore sharedDataStore];
-    self.noteTableView.delegate = self;
-    self.noteTableView.dataSource = self;
-    // Do any additional setup after loading the view.
+    
+    [self setUpVariablesAndDelegates];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self.noteTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)setUpVariablesAndDelegates {
+    self.dataStore = [DataStore sharedDataStore];
+    self.noteTableView.delegate = self;
+    self.noteTableView.dataSource = self;
+    [self.dataStore retrieveNotesWithBlock:^(BOOL success) {
+        if (success) {
+            [self.noteTableView reloadData];
+        }
+    }];
 }
 
 #pragma mark - Tableview Datasource methods
@@ -41,19 +56,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return [self.dataStore.notesArray count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"noteCell" forIndexPath:indexPath];
     
+    Note *currentNote = self.dataStore.notesArray[indexPath.row];
     
-    NSLog(@"%ld", indexPath.row);
-    
-    //cell.previewImageView.image;
-    cell.noteTitleLabel.text = @"Note label";
-    cell.noteBodyLabel.text = @"This is the note body. It should be 3 lines";
+    cell.previewImageView.image = currentNote.noteImage;
+    cell.noteTitleLabel.text = currentNote.noteTitle;
+    cell.noteBodyLabel.text = currentNote.noteBody;
 
     return cell;
 }
@@ -72,7 +86,9 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"Deleting note at position : %ld", indexPath.row);
+    [self.dataStore.notesArray removeObjectAtIndex:indexPath.row];
+    [self.dataStore saveNotes];
+    [self.noteTableView reloadData];
 }
 
 
@@ -81,13 +97,11 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSIndexPath *indexPath = [self.noteTableView indexPathForSelectedRow];
     AddNoteViewController *newVC = segue.destinationViewController;
-    if ([segue.identifier isEqualToString:@"newNoteSegue"]) {
-        Note *newNote = [[Note alloc] init];
-        newVC.selectedNote = newNote;
-    }
-    else if ([segue.identifier isEqualToString:@"detailNoteSegue"]) {
-        //
+    if ([segue.identifier isEqualToString:@"detailNoteSegue"]) {
+        newVC.selectedNote = [self.dataStore.notesArray objectAtIndex:indexPath.row];
     }
 }
 

@@ -7,9 +7,12 @@
 //
 
 #import "AddNoteViewController.h"
+#import "DataStore.h"
 
 
 @interface AddNoteViewController ()
+
+@property (strong, nonatomic) DataStore *dataStore;
 
 @property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
 @property (weak, nonatomic) IBOutlet UITextField *noteTitleTextField;
@@ -22,21 +25,24 @@
 
 @implementation AddNoteViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.noteTitleTextField.delegate = self;
-    self.noteBodyTextView.delegate = self;
-    [self setUpNavigationButtons];
     
-    self.noteImageView.backgroundColor = [UIColor purpleColor];
-    // Do any additional setup after loading the view.
+    [self initializeVariablesAndDelegates];
+    [self setUpNavigationButtons];
+    [self setUpDataFields];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)initializeVariablesAndDelegates {
+    self.dataStore = [DataStore sharedDataStore];
+    self.noteTitleTextField.delegate = self;
+    self.noteBodyTextView.delegate = self;
 }
 
 - (void)setUpNavigationButtons {
@@ -45,6 +51,36 @@
     UIBarButtonItem *btnSave = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveNote:)];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnSave, btnShare, btnCamera, nil]];
 
+}
+
+- (void)setUpDataFields {
+    if (self.selectedNote != NULL) {
+        self.noteImageView.image = self.selectedNote.noteImage;
+        self.noteTitleTextField.text = self.selectedNote.noteTitle;
+        self.noteBodyTextView.text = self.selectedNote.noteBody;
+    }
+    else {
+        self.noteImageView.image = [UIImage imageNamed:@"Note-Icon.jpg"];
+        self.noteBodyTextView.text = @"Please enter the body of your note here.";
+    }
+}
+
+-(void) saveNote:(UIBarButtonItem *)sender  {
+    
+    NSString *newTitle = self.noteTitleTextField.text;
+    NSString *newBody = self.noteBodyTextView.text;
+    UIImage *newImage = self.noteImageView.image;
+    
+    if (self.selectedNote == nil) {
+        [self.dataStore createNoteWithTitle:newTitle withBody:newBody withImage:newImage];
+    }
+    else {
+        self.selectedNote.noteTitle = self.noteTitleTextField.text;
+        self.selectedNote.noteBody = self.noteBodyTextView.text;
+        self.selectedNote.noteImage = self.noteImageView.image;
+    }
+    
+    [self.dataStore saveNotes];
 }
 
 #pragma mark - MFMailCompose delegate methods
@@ -157,10 +193,6 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-
--(void) saveNote:(UIBarButtonItem *)sender  {
-    
-}
 
 #pragma mark - Text and Keyboard Management
 

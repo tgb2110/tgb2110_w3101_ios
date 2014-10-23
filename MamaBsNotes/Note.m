@@ -21,12 +21,14 @@
 -(instancetype)initNoteWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image {
     self = [super init];
     if (self) {
+        
         _noteTitle = title;
         _noteBody = body;
         _noteImage = image;
     }
     return self;
 }
+
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
     

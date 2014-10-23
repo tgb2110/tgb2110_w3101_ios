@@ -28,14 +28,12 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Note-Icon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="J2q-gV-SAL">
                                                     <rect key="frame" x="8" y="7" width="198" height="108"/>
-                                                    <color key="backgroundColor" red="0.44841892193985899" green="1" blue="0.97078820051797732" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="198" id="vjV-fg-8z5"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Note Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDF-mZ-hFJ">
                                                     <rect key="frame" x="214" y="8" width="378" height="37"/>
-                                                    <color key="backgroundColor" red="1" green="0.28638423576119754" blue="0.26524327118170932" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="TCS-8n-qrX"/>
                                                     </constraints>
@@ -45,7 +43,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Body - 3 lines" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uel-cn-QBc">
                                                     <rect key="frame" x="214" y="53" width="378" height="62"/>
-                                                    <color key="backgroundColor" red="1" green="0.92508481644116192" blue="0.1935822995534191" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -64,7 +61,6 @@
                                                 <constraint firstItem="uel-cn-QBc" firstAttribute="bottom" secondItem="J2q-gV-SAL" secondAttribute="bottom" id="wue-61-W9X"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.18500111293956034" blue="0.9133339753318136" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="noteBodyLabel" destination="uel-cn-QBc" id="iQd-id-9wX"/>
                                             <outlet property="noteTitleLabel" destination="WDF-mZ-hFJ" id="Syd-pe-nkc"/>
@@ -119,6 +115,7 @@
                                 <rect key="frame" x="16" y="274" width="568" height="79"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="79" id="CY6-UG-WeC"/>
                                     <constraint firstAttribute="height" constant="79" id="zZa-sa-Nfz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -126,6 +123,9 @@
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZP-nS-2Z4">
                                 <rect key="frame" x="16" y="72" width="568" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="152" id="HlB-qp-f9a"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,9 +177,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Note-Icon.jpg" width="198" height="199"/>
+        <image name="Note-Icon.jpg" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8SA-9t-9ea"/>
+        <segue reference="o34-Z5-Pfs"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,4 +14,5 @@
 @interface AddNoteViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) Note *selectedNote;
+
 @end

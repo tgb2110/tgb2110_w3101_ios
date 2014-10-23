@@ -7,6 +7,7 @@
 //
 
 #import "DataStore.h"
+#import "Note.h"
 
 @implementation DataStore
 
@@ -28,6 +29,17 @@
     return self;
 }
 
+-(void)createNoteWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image {
+    
+    Note *newNote = [[Note alloc] initNoteWithTitle:title withBody:body withImage:image];
+    
+    Note *newNoter = [[Note alloc] init];
+    newNoter.noteImage = image;
+    newNoter.noteBody = body;
+    newNoter.noteTitle = title;
+    
+    [self.notesArray addObject:newNote];
+}
 
 -(void) saveNotes {
     
@@ -38,7 +50,7 @@
     [savedArrayData writeToFile:fullPath atomically:YES];
 }
 
--(void) retrieveNotes {
+- (void)retrieveNotesWithBlock:(void (^)(BOOL))completion {
     
     NSString *fullPath = [self defaultSavePath];
     
@@ -49,7 +61,9 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.notesArray = kaijuNoteArray;
         NSLog(@"done loading");
+        completion(YES);
     });
+
 }
 
 

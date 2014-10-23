@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface DataStore : NSObject
 
@@ -15,5 +16,11 @@
 
 
 + (instancetype)sharedDataStore;
+
+-(void) saveNotes;
+
+- (void)retrieveNotesWithBlock:(void (^)(BOOL))completion;
+
+-(void)createNoteWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image;
 
 @end
