@@ -29,7 +29,7 @@
     return self;
 }
 
--(void)createNoteWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image {
+-(void)createNoteInDataStoreWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image {
     
     Note *newNote = [[Note alloc] initNoteWithTitle:title withBody:body withImage:image];
 
@@ -51,11 +51,12 @@
     
     NSData *loadedArrayData = [[NSData alloc] initWithContentsOfFile:fullPath];
     
-    NSMutableArray *kaijuNoteArray = [NSKeyedUnarchiver unarchiveObjectWithData:loadedArrayData];
+    NSMutableArray *noteArray = [NSKeyedUnarchiver unarchiveObjectWithData:loadedArrayData];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.notesArray = kaijuNoteArray;
-        NSLog(@"done loading");
+        if (noteArray != NULL) {
+            self.notesArray = noteArray;
+        }
         completion(YES);
     });
 

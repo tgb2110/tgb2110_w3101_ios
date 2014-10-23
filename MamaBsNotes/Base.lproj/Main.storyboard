@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4zx-lw-koc">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -21,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="124" id="eaV-x5-Gqr" customClass="NoteTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="124" id="eaV-x5-Gqr" customClass="NoteTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eaV-x5-Gqr" id="T3i-tO-5OQ">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -49,7 +50,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="WDF-mZ-hFJ" firstAttribute="trailing" secondItem="T3i-tO-5OQ" secondAttribute="trailingMargin" id="5Wu-AY-Rk3"/>
+                                                <constraint firstItem="WDF-mZ-hFJ" firstAttribute="trailing" secondItem="T3i-tO-5OQ" secondAttribute="trailingMargin" constant="33" id="5Wu-AY-Rk3"/>
                                                 <constraint firstItem="WDF-mZ-hFJ" firstAttribute="leading" secondItem="uel-cn-QBc" secondAttribute="leading" id="CIK-X8-ThR"/>
                                                 <constraint firstItem="uel-cn-QBc" firstAttribute="top" secondItem="WDF-mZ-hFJ" secondAttribute="bottom" constant="8" symbolic="YES" id="IUh-h5-ngk"/>
                                                 <constraint firstItem="WDF-mZ-hFJ" firstAttribute="trailing" secondItem="uel-cn-QBc" secondAttribute="trailing" id="TjG-jT-ne5"/>
@@ -107,39 +108,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter your note title here." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-MY-SDA">
-                                <rect key="frame" x="16" y="230" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="16" y="232" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1g6-Ne-H8C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZP-nS-2Z4">
+                                <rect key="frame" x="16" y="72" width="568" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="152" id="Aoe-8X-D8H"/>
+                                </constraints>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please enter the body of your note here. " translatesAutoresizingMaskIntoConstraints="NO" id="Ebp-s3-dpC">
-                                <rect key="frame" x="16" y="274" width="568" height="79"/>
+                                <rect key="frame" x="16" y="270" width="568" height="79"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="79" id="CY6-UG-WeC"/>
-                                    <constraint firstAttribute="height" constant="79" id="zZa-sa-Nfz"/>
+                                    <constraint firstAttribute="height" constant="79" id="j2R-KU-6d4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZP-nS-2Z4">
-                                <rect key="frame" x="16" y="72" width="568" height="152"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="152" id="HlB-qp-f9a"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="trailing" secondItem="HoR-MY-SDA" secondAttribute="trailing" id="1RV-uP-jAq"/>
-                            <constraint firstItem="HoR-MY-SDA" firstAttribute="top" secondItem="DZP-nS-2Z4" secondAttribute="bottom" constant="6" id="9xc-ho-WgG"/>
-                            <constraint firstItem="DZP-nS-2Z4" firstAttribute="trailing" secondItem="HoR-MY-SDA" secondAttribute="trailing" id="A9F-rm-Vpr"/>
-                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="leading" secondItem="wri-ng-F2W" secondAttribute="leadingMargin" id="Chd-vR-4RA"/>
-                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="leading" secondItem="HoR-MY-SDA" secondAttribute="leading" id="D9P-xk-tbE"/>
-                            <constraint firstItem="NPX-aH-Cf5" firstAttribute="top" secondItem="Ebp-s3-dpC" secondAttribute="bottom" constant="247" id="XFI-WZ-F7A"/>
-                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="top" secondItem="HoR-MY-SDA" secondAttribute="bottom" constant="14" id="fYP-os-sld"/>
-                            <constraint firstItem="DZP-nS-2Z4" firstAttribute="top" secondItem="n5D-ec-4dy" secondAttribute="bottom" constant="8" symbolic="YES" id="gEW-tv-vKy"/>
-                            <constraint firstItem="HoR-MY-SDA" firstAttribute="leading" secondItem="DZP-nS-2Z4" secondAttribute="leading" id="lNS-mC-jXt"/>
-                            <constraint firstItem="HoR-MY-SDA" firstAttribute="trailing" secondItem="wri-ng-F2W" secondAttribute="trailingMargin" id="vbF-58-yZ9"/>
+                            <constraint firstItem="Ebp-s3-dpC" firstAttribute="top" secondItem="HoR-MY-SDA" secondAttribute="bottom" constant="8" symbolic="YES" id="4oL-Lf-E0R"/>
+                            <constraint firstItem="HoR-MY-SDA" firstAttribute="trailing" secondItem="Ebp-s3-dpC" secondAttribute="trailing" id="FHh-dX-SSi"/>
+                            <constraint firstItem="HoR-MY-SDA" firstAttribute="top" secondItem="DZP-nS-2Z4" secondAttribute="bottom" constant="8" symbolic="YES" id="Llg-NM-IvR"/>
+                            <constraint firstItem="HoR-MY-SDA" firstAttribute="leading" secondItem="DZP-nS-2Z4" secondAttribute="leading" id="Wzv-A5-Iah"/>
+                            <constraint firstItem="DZP-nS-2Z4" firstAttribute="top" secondItem="n5D-ec-4dy" secondAttribute="bottom" constant="8" symbolic="YES" id="Z0N-rR-qA4"/>
+                            <constraint firstItem="DZP-nS-2Z4" firstAttribute="trailing" secondItem="HoR-MY-SDA" secondAttribute="trailing" id="dIi-lP-Kqy"/>
+                            <constraint firstItem="HoR-MY-SDA" firstAttribute="leading" secondItem="Ebp-s3-dpC" secondAttribute="leading" id="i0p-jY-lRg"/>
+                            <constraint firstItem="DZP-nS-2Z4" firstAttribute="trailing" secondItem="wri-ng-F2W" secondAttribute="trailingMargin" id="kF5-Bo-XQN"/>
+                            <constraint firstItem="HoR-MY-SDA" firstAttribute="leading" secondItem="wri-ng-F2W" secondAttribute="leadingMargin" id="rfe-39-UGM"/>
                         </constraints>
                         <connections>
                             <action selector="clickedOffTextField:" destination="XAA-aB-q3p" eventType="valueChanged" id="kjA-Gg-Ddw"/>

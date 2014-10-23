@@ -46,7 +46,7 @@
 }
 
 - (void)setUpNavigationButtons {
-    UIBarButtonItem *btnShare = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(emailNote:)];
+    UIBarButtonItem *btnShare = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(emailNote:)];
     UIBarButtonItem *btnCamera = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(pickImageSource:)];
     UIBarButtonItem *btnSave = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveNote:)];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnSave, btnShare, btnCamera, nil]];
@@ -72,27 +72,29 @@
     UIImage *newImage = self.noteImageView.image;
     
     if (self.selectedNote == nil) {
-        [self.dataStore createNoteWithTitle:newTitle withBody:newBody withImage:newImage];
+        [self.dataStore createNoteInDataStoreWithTitle:newTitle withBody:newBody withImage:newImage];
     }
     else {
-        self.selectedNote.noteTitle = self.noteTitleTextField.text;
-        self.selectedNote.noteBody = self.noteBodyTextView.text;
-        self.selectedNote.noteImage = self.noteImageView.image;
+        self.selectedNote.noteTitle = newTitle;
+        self.selectedNote.noteBody = newBody;
+        self.selectedNote.noteImage = newImage;
     }
     
     [self.dataStore saveNotes];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - MFMailCompose delegate methods
 
 - (IBAction)emailNote:(id)sender {
+    NSLog(@"%@", sender);
     if ([MFMailComposeViewController canSendMail]) {
         
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
         
-        NSString *messageSubject;
-        NSString *messageBody;
+        NSString *messageSubject = self.noteTitleTextField.text;
+        NSString *messageBody = self.noteBodyTextView.text;
         
         NSData *imageData = UIImageJPEGRepresentation(self.noteImageView.image, 1);
         [mailViewController addAttachmentData:imageData mimeType:@"image/jpeg" fileName:@"NoteAttachment.jpg"];

@@ -21,6 +21,6 @@
 
 - (void)retrieveNotesWithBlock:(void (^)(BOOL))completion;
 
--(void)createNoteWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image;
+-(void)createNoteInDataStoreWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image;
 
 @end
