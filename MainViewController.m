@@ -8,9 +8,14 @@
 
 #import "MainViewController.h"
 #import "NoteTableViewCell.h"
+#import "DataStore.h"
+#import "AddNoteViewController.h"
+#import "Note.h"
 
-@interface MainViewController () 
+@interface MainViewController ()
+
 @property (weak, nonatomic) IBOutlet UITableView *noteTableView;
+@property (strong, nonatomic) DataStore *dataStore;
 
 @end
 
@@ -18,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataStore = [DataStore sharedDataStore];
     self.noteTableView.delegate = self;
     self.noteTableView.dataSource = self;
     // Do any additional setup after loading the view.
@@ -70,14 +76,20 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    AddNoteViewController *newVC = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"newNoteSegue"]) {
+        Note *newNote = [[Note alloc] init];
+        newVC.selectedNote = newNote;
+    }
+    else if ([segue.identifier isEqualToString:@"detailNoteSegue"]) {
+        //
+    }
 }
-*/
+
 
 @end
