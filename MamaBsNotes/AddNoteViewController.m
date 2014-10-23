@@ -207,7 +207,6 @@
     [textView selectAll:textView.text];
 }
 
-
 - (IBAction)hideKeyboard:(UIControl *)sender {
     [[self view] endEditing:YES];
 }

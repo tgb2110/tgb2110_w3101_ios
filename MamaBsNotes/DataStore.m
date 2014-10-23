@@ -32,12 +32,7 @@
 -(void)createNoteWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image {
     
     Note *newNote = [[Note alloc] initNoteWithTitle:title withBody:body withImage:image];
-    
-    Note *newNoter = [[Note alloc] init];
-    newNoter.noteImage = image;
-    newNoter.noteBody = body;
-    newNoter.noteTitle = title;
-    
+
     [self.notesArray addObject:newNote];
 }
 
@@ -66,8 +61,8 @@
 
 }
 
-
 - (NSString *)defaultSavePath {
+    
     NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     
     NSString *uniquePath = @"Mama_Bs_Notes";
