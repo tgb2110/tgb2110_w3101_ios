@@ -68,6 +68,7 @@
     cell.previewImageView.image = currentNote.noteImage;
     cell.noteTitleLabel.text = currentNote.noteTitle;
     cell.noteBodyLabel.text = currentNote.noteBody;
+    cell.noteTimeLabel.text = currentNote.noteTime;
 
     return cell;
 }
@@ -99,6 +100,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSIndexPath *indexPath = [self.noteTableView indexPathForSelectedRow];
+    
     AddNoteViewController *newVC = segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"detailNoteSegue"]) {
         newVC.selectedNote = [self.dataStore.notesArray objectAtIndex:indexPath.row];

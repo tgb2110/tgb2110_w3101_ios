@@ -14,7 +14,8 @@
 @property (strong, nonatomic) NSString *noteTitle;
 @property (strong, nonatomic) NSString *noteBody;
 @property (strong, nonatomic) UIImage *noteImage;
+@property (strong, nonatomic) NSString *noteTime;
 
--(instancetype)initNoteWithTitle:(NSString *)title withBody:(NSString *) body withImage:(UIImage *)image;
+-(instancetype)initNoteWithTitle:(NSString *)title withBody:(NSString *) body withImage:(UIImage *)image withTime:(NSString *)time;
 
 @end

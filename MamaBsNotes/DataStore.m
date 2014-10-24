@@ -31,7 +31,7 @@
 
 -(void)createNoteInDataStoreWithTitle:(NSString *)title withBody:(NSString *)body withImage:(UIImage *)image {
     
-    Note *newNote = [[Note alloc] initNoteWithTitle:title withBody:body withImage:image];
+    Note *newNote = [[Note alloc] initNoteWithTitle:title withBody:body withImage:image withTime:@""];
 
     [self.notesArray addObject:newNote];
 }
@@ -56,9 +56,11 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         if (noteArray != NULL) {
             self.notesArray = noteArray;
+            completion(YES);
         }
-        completion(YES);
+        completion(NO);
     });
+
 
 }
 

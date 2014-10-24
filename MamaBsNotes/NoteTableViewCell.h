@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 @property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteBodyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noteTimeLabel;
 
 @end
