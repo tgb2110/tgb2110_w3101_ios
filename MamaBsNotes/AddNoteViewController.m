@@ -91,7 +91,7 @@
         mailViewController.mailComposeDelegate = self;
         
         NSString *messageSubject = self.selectedNote.noteTitle;
-        NSString *messageBody = [NSString stringWithFormat:@"%@, %@", self.selectedNote.noteTime, self.selectedNote.noteBody];
+        NSString *messageBody = [NSString stringWithFormat:@"%@\n\n%@", self.selectedNote.noteBody, self.selectedNote.noteTime];
         
         NSData *imageData = UIImageJPEGRepresentation(self.noteImageView.image, 1);
         [mailViewController addAttachmentData:imageData mimeType:@"image/jpeg" fileName:@"NoteAttachment.jpg"];
