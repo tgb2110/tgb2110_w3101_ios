@@ -27,8 +27,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eaV-x5-Gqr" id="T3i-tO-5OQ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Note-Icon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="J2q-gV-SAL">
-                                                    <rect key="frame" x="8" y="11" width="113" height="78"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2q-gV-SAL">
+                                                    <rect key="frame" x="8" y="11" width="113" height="84"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="113" id="v3R-6z-fJ9"/>
                                                     </constraints>
@@ -42,14 +42,14 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Note Body - 3 lines" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uel-cn-QBc">
-                                                    <rect key="frame" x="129" y="51" width="430" height="38"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Note Body - 3 lines" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uel-cn-QBc">
+                                                    <rect key="frame" x="129" y="51" width="430" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxm-AK-JAB">
-                                                    <rect key="frame" x="8" y="95" width="551" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxm-AK-JAB">
+                                                    <rect key="frame" x="8" y="101" width="551" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -132,10 +132,10 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please enter the body of your note here. " translatesAutoresizingMaskIntoConstraints="NO" id="Ebp-s3-dpC">
-                                <rect key="frame" x="16" y="270" width="568" height="79"/>
+                                <rect key="frame" x="16" y="270" width="568" height="310"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="79" id="j2R-KU-6d4"/>
+                                    <constraint firstAttribute="height" constant="310" id="j2R-KU-6d4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -188,9 +188,6 @@
             <point key="canvasLocation" x="2821" y="168"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Note-Icon.jpg" width="200" height="200"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="o34-Z5-Pfs"/>
     </inferredMetricsTieBreakers>

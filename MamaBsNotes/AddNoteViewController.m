@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self initializeVariablesAndDelegates];
     [self setUpNavigationButtons];
     [self setUpDataFields];
@@ -55,12 +54,16 @@
 
 - (void)setUpDataFields {
     if (self.selectedNote != NULL) {
-        self.noteImageView.image = self.selectedNote.noteImage;
+        if (self.selectedNote.noteImage != nil) {
+            self.noteImageView.image = self.selectedNote.noteImage;
+        } else {
+            self.noteImageView.backgroundColor = [UIColor blackColor];
+        }
         self.noteTitleTextField.text = self.selectedNote.noteTitle;
         self.noteBodyTextView.text = self.selectedNote.noteBody;
     }
     else {
-        self.noteImageView.image = [UIImage imageNamed:@"Note-Icon.jpg"];
+        self.noteImageView.backgroundColor = [UIColor blackColor];
         self.noteBodyTextView.text = @"Please enter the body of your note here.";
     }
 }
@@ -203,10 +206,19 @@
     if ([textView.text isEqualToString:@""]){
         textView.text = @"Please enter the body of your note here.";
     }
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,0,320,480);
+    [UIView commitAnimations];
+    
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     [textView selectAll:textView.text];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,-80,320,480);
+    [UIView commitAnimations];
 }
 
 - (IBAction)hideKeyboard:(UIControl *)sender {

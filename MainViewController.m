@@ -64,8 +64,12 @@
     NoteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"noteCell" forIndexPath:indexPath];
     
     Note *currentNote = self.dataStore.notesArray[indexPath.row];
+    if (currentNote.noteImage != nil) {
+        cell.previewImageView.image = currentNote.noteImage;
+    } else {
+        cell.previewImageView.backgroundColor = [UIColor blackColor];
+    }
     
-    cell.previewImageView.image = currentNote.noteImage;
     cell.noteTitleLabel.text = currentNote.noteTitle;
     cell.noteBodyLabel.text = currentNote.noteBody;
     cell.noteTimeLabel.text = currentNote.noteTime;
