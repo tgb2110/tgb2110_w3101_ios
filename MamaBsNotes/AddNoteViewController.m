@@ -82,7 +82,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message not Ready"
                                                             message:@"Please save note before emailing"
                                                            delegate:self
-                                                  cancelButtonTitle:@"Cancel"
+                                                  cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];
             return;
@@ -102,10 +102,13 @@
         [self.navigationController presentViewController:mailViewController animated:YES completion:nil];
         
     }
-    else {
-        
-        NSLog(@"Device is unable to send email in its current state.");
-        
+    else {UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                          message:@"Device is unable to send email in its current state."
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:nil];
+        [alert show];
+        return;
     }
 }
 
@@ -132,16 +135,16 @@
     switch (result)
     {
         case MFMailComposeResultCancelled:
-            NSLog(@"Mail cancelled");
+            //NSLog(@"Mail cancelled");
             break;
         case MFMailComposeResultSaved:
-            NSLog(@"Mail saved");
+            //NSLog(@"Mail saved");
             break;
         case MFMailComposeResultSent:
-            NSLog(@"Mail sent");
+            //NSLog(@"Mail sent");
             break;
         case MFMailComposeResultFailed:
-            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            //NSLog(@"Mail sent failure: %@", [error localizedDescription]);
             break;
         default:
             break;
