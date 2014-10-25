@@ -47,7 +47,7 @@
 - (void)setUpNavigationButtons {
     UIBarButtonItem *btnShare = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(emailNote:)];
     UIBarButtonItem *btnCamera = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(pickImageSource:)];
-    UIBarButtonItem *btnSave = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveNote:)];
+    UIBarButtonItem *btnSave = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveNoteAndExit:)];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnSave, btnShare, btnCamera, nil]];
 
 }
@@ -68,36 +68,30 @@
     }
 }
 
--(void) saveNote:(UIBarButtonItem *)sender  {
+-(void) saveNoteAndExit:(UIBarButtonItem *)sender  {
     
-    NSString *newTitle = self.noteTitleTextField.text;
-    NSString *newBody = self.noteBodyTextView.text;
-    UIImage *newImage = self.noteImageView.image;
-    
-    if (self.selectedNote == nil) {
-        [self.dataStore createNoteInDataStoreWithTitle:newTitle withBody:newBody withImage:newImage];
-    }
-    else {
-        self.selectedNote.noteTitle = newTitle;
-        self.selectedNote.noteBody = newBody;
-        self.selectedNote.noteImage = newImage;
-    }
-    
-    [self.dataStore saveNotes];
+    [self saveNote];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - MFMailCompose delegate methods
 
 - (IBAction)emailNote:(id)sender {
-    NSLog(@"%@", sender);
     if ([MFMailComposeViewController canSendMail]) {
-        
+        if (self.selectedNote == nil) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message not Ready"
+                                                            message:@"Please save note before emailing"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
         
-        NSString *messageSubject = self.noteTitleTextField.text;
-        NSString *messageBody = self.noteBodyTextView.text;
+        NSString *messageSubject = self.selectedNote.noteTitle;
+        NSString *messageBody = [NSString stringWithFormat:@"%@, %@", self.selectedNote.noteTime, self.selectedNote.noteBody];
         
         NSData *imageData = UIImageJPEGRepresentation(self.noteImageView.image, 1);
         [mailViewController addAttachmentData:imageData mimeType:@"image/jpeg" fileName:@"NoteAttachment.jpg"];
@@ -113,6 +107,24 @@
         NSLog(@"Device is unable to send email in its current state.");
         
     }
+}
+
+-(void)saveNote {
+    [self adjustViewCenterWithOffset:0];
+    NSString *newTitle = self.noteTitleTextField.text;
+    NSString *newBody = self.noteBodyTextView.text;
+    UIImage *newImage = self.noteImageView.image;
+    
+    if (self.selectedNote == nil) {
+        [self.dataStore createNoteInDataStoreWithTitle:newTitle withBody:newBody withImage:newImage];
+    }
+    else {
+        self.selectedNote.noteTitle = newTitle;
+        self.selectedNote.noteBody = newBody;
+        self.selectedNote.noteImage = newImage;
+    }
+    
+    [self.dataStore saveNotes];
 }
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
@@ -202,26 +214,22 @@
 #pragma mark - Text and Keyboard Management
 
 -(void)textViewDidEndEditing:(UITextView *)textView {
-    
-    if ([textView.text isEqualToString:@""]){
-        textView.text = @"Please enter the body of your note here.";
-    }
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25];
-    self.view.frame = CGRectMake(0,0,320,480);
-    [UIView commitAnimations];
-    
+    [self adjustViewCenterWithOffset:0];
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     [textView selectAll:textView.text];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25];
-    self.view.frame = CGRectMake(0,-80,320,480);
-    [UIView commitAnimations];
+    [self adjustViewCenterWithOffset:-80];
 }
 
 - (IBAction)hideKeyboard:(UIControl *)sender {
     [[self view] endEditing:YES];
+}
+
+-(void)adjustViewCenterWithOffset:(NSInteger) offset {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    self.view.frame = CGRectMake(0,offset,320,480);
+    [UIView commitAnimations];
 }
 @end
