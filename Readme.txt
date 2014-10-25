@@ -9,4 +9,4 @@ Known issues
 
 - Taking a photo sometimes causes a NSLog message "Snapshotting a view that has not been rendered results in an empty snapshot. Ensure your view has been rendered at least once before snapshotting or snapshot after screen updates."
 
-
+- Icon courtesy of https://c2.staticflickr.com/8/7156/6482774715_dc94b51043_z.jpg
